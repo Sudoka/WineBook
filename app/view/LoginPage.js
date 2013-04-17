@@ -21,7 +21,7 @@ Ext.define("WineBook.view.LoginPage",{
                 xtype: 'formpanel',
                 iconCls: 'user',
                 scrollable: true,
-                id: 'main-mainPage-id',
+                //ååid: 'main-mainPage-id',
 
                 items:[
                     {

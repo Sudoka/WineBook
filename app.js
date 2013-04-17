@@ -27,10 +27,19 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
+    models: ['UserProfile'],
+
+    stores: ['UserProfileStore'],
+
+
     views: [
-        'LoginPage' , 'util.forms.LoginForm'
+        'LoginPage' , 'util.forms.LoginForm',
+        'SignupView', 'util.forms.SignupForm'
     ],
 
+    controllers: [
+        'LoginControl'
+    ],
     icon: {
         '57': 'resources/icons/Icon.png',
         '72': 'resources/icons/Icon~ipad.png',
