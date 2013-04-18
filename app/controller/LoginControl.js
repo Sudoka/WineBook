@@ -5,13 +5,6 @@
  * Time: 10:30 PM
  */
 
-/**
- * Created with JetBrains PhpStorm.
- * User: huypham612
- * Date: 9/22/12
- * Time: 12:33 AM
- */
-
 Ext.define('WineBook.controller.LoginControl',{
     extend: 'Ext.app.Controller',
 
@@ -33,14 +26,30 @@ Ext.define('WineBook.controller.LoginControl',{
             "button[action=submitButton-id]": {
                 tap: 'createNewUser'
             },
-            "button[action=signup-backButton-id]": {  //back button in SignupView.js
+            "button[action=SignupForm-cancelButton-id]": {  //cancel button in SignupView.js
                 tap: 'showLoginForm'
             }
         }
     },
+
+    /**
+     * Go to Main Page after user has successfully logged in
+     * @param username
+     * @param text
+     */
+    toMainPage: function(username){
+        var me = this;
+
+        me.getLoginView().destroy();
+        var mainPage = Ext.create('WineBook.view.Main');
+        Ext.Viewport.add(mainPage);
+        Ext.Viewport.setActiveItem(mainPage);
+    },
+
+
     /**
      * Called by createNewUser after user signed up
-     * Called by the back button in SignupView.js
+     * Called by the cancel button in SignupView.js
      */
     showLoginForm: function(){
         var me = this;
@@ -111,11 +120,10 @@ Ext.define('WineBook.controller.LoginControl',{
             Ext.Msg.alert('Invalid Password');
         }
         else{
-            console.log(username + ' , ' + pass);
-                var params = {
-                    username: username,
-                    password: pass
-                };
+            var params = {
+                username: username,
+                password: pass
+            };
            Ext.Ajax.request({
                url: 'http://localhost/~huypham612/WineBook/server/login.php',
                params: params,
@@ -123,8 +131,7 @@ Ext.define('WineBook.controller.LoginControl',{
                success: function(response){
                    var text = response.responseText;
                    if(text === 'Login Succeeded' || text === 'Login Succeeded but No Profile'){
-                       //me.toMainPage(username, text);
-                       Ext.Msg.alert("User Pass is valid");
+                       me.toMainPage(username);
                    }
                    else{
                        Ext.Msg.alert(text);

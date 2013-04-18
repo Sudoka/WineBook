@@ -18,14 +18,14 @@ Ext.define("WineBook.view.util.forms.LoginForm",{
             {
                 xtype: 'textfield',
                 name:  'username',
-                placeHolder: 'Username'
-                //value: 'huy'
+                placeHolder: 'Username',
+                value: 'huy'
             },
             {
                 xtype: 'passwordfield',
                 name:  'password',
-                placeHolder: 'Password'
-                //value: 'styles'
+                placeHolder: 'Password',
+                value: '1234567'
             },
             {
                 xtype:  'button',

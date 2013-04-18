@@ -6,7 +6,7 @@
  */
 Ext.define("WineBook.view.SignupView",{
     extend: 'Ext.tab.Panel',
-    requires: ['Ext.form.Panel'],
+    requires: ['Ext.form.Panel', 'Ext.TitleBar'],
     id: 'signup-view-id',
     xtype: 'signup-page',
     config :{
@@ -27,26 +27,22 @@ Ext.define("WineBook.view.SignupView",{
 
                 items:[
                     {
-                        xtype:  'toolbar',
+                        xtype: 'titlebar',
                         docked: 'top',
-                        ui:     'light',
-                        items:[
-                            {
-                                xtype: 'button',
-                                //text:  'Back',
-                                iconCls: 'arrow_left',
-                                iconMask: true,
-                                ui:    'back',
-                                action: 'signup-backButton-id'
-                            }
-                        ]
+
+                        title: 'New User Account'
+                        //ui:     'light',
+//                        items:[
+//                                {
+//                                    xtype: 'button',
+//                                    iconCls: 'arrow_left',
+//                                    iconMask: true,
+//                                    ui:    'back',
+//                                    action: 'signup-backButton-id'
+//                                }
+//                        ]
                     },
-                    {
-                        cls: 'Main-welcomeMessage',
-                        html: [
-                            '<h2 class="Login-welcome">New User Account</h2><br>'
-                        ].join("")
-                    },
+                    {html: ['<br><br>'].join("")},   //To put space between title bar and the form
                     {
                         xtype: 'signupForm'
                     }

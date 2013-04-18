@@ -33,6 +33,7 @@ Ext.application({
 
 
     views: [
+        'Main',
         'LoginPage' , 'util.forms.LoginForm',
         'SignupView', 'util.forms.SignupForm'
     ],

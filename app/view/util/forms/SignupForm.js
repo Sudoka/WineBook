@@ -31,17 +31,23 @@ Ext.define("WineBook.view.util.forms.SignupForm",{
                         xtype: 'passwordfield',
                         name:  'verify',
                         placeHolder: 'Verify Password'
+                    },
+                    {
+                        xtype: 'button',
+                        text:  'Submit',
+                        cls:   'submitButton-cls',
+                        ui:    'confirm',
+                        action:'submitButton-id'
+                    },
+                    {
+                        xtype: 'button',
+                        text:  'Cancel',
+                        ui:    'action',
+                        action:'SignupForm-cancelButton-id'
                     }
-
                 ]
-            },
-            {
-                xtype: 'button',
-                text:  'Submit',
-                cls:   'submitButton-cls',
-                ui:    'confirm',
-                action:'submitButton-id'
             }
+
 
         ]
     }

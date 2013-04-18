@@ -1,48 +1,147 @@
 Ext.define('WineBook.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
-    requires: [
-        'Ext.TitleBar',
-        'Ext.Video'
-    ],
+    requires: ['Ext.TitleBar', 'Ext.layout.*'],
     config: {
         tabBarPosition: 'bottom',
 
         items: [
             {
-                title: 'Welcome',
+                title: 'Menu',
+                xtype: 'formpanel',
                 iconCls: 'home',
+                ui: 'light',
 
                 styleHtmlContent: true,
                 scrollable: true,
 
-                items: {
-                    docked: 'top',
-                    xtype: 'titlebar',
-                    title: 'Welcome to Sencha Touch 2'
-                },
+                items:[
 
-                html: [
-                    "You've just generated a new Sencha Touch 2 project. What you're looking at right now is the ",
-                    "contents of <a target='_blank' href=\"app/view/Main.js\">app/view/Main.js</a> - edit that file ",
-                    "and refresh to change what's rendered here."
-                ].join("")
-            },
-            {
-                title: 'Get Started',
-                iconCls: 'action',
-
-                items: [
                     {
                         docked: 'top',
                         xtype: 'titlebar',
-                        title: 'Getting Started'
+                        title: 'WineBook'
                     },
+                    {html:['<br><br>'].join("")},
                     {
-                        xtype: 'video',
-                        url: 'http://av.vimeo.com/64284/137/87347327.mp4?token=1330978144_f9b698fea38cd408d52a2393240c896c',
-                        posterUrl: 'http://b.vimeocdn.com/ts/261/062/261062119_640.jpg'
+                        xtype: 'container',
+                        layout: {
+                            type: 'hbox',
+                            align: 'middle'
+                        },
+                        items:[
+                            {html:[' '].join(""), flex:.07},
+                            {
+                                xtype: 'button',
+                                text:  'Wine Journal',
+
+                                icon: 'resources/icons/myIcons/star26x26.png',
+                                iconMask: true,
+                                iconAlign: 'top',
+                                height: 48,
+                                width: 130,
+                                flex: 3.2,
+                                style: {
+                                    background: '#FCFFFF'
+                                },
+                                action:'Main-wineJournalButton-id'
+                            },
+                            {html:[''].join(""), flex:.5},
+                            {
+                                xtype: 'button',
+                                text:  'Price Check',
+                                style: {
+                                    background: '#FCFFFF'
+                                },
+                                icon: 'resources/icons/myIcons/Bankaccount.png',
+                                iconMask: true,
+                                flex: 3.2,
+                                iconAlign: 'top',
+                                action:'Main-wineToTryButton-id',
+                                height: 48,
+                                width: 130
+                            },
+                            {html:[' '].join(""), flex:.07},
+                        ]
+                    },
+
+                    {html:['<br><br>'].join("")},
+                    {
+                        xtype: 'container',
+                        layout: {
+                            type: 'hbox',
+                            align: 'middle'
+                        },
+                        items:[
+                            {html:[' '].join(""), flex:.07},
+                            {
+                                xtype: 'button',
+                                text:  'Wine Search',
+                                iconAlign: 'top',
+                                height: 48,
+                                width: 130,
+                                flex: 3.2,
+                                style: {
+                                    background: '#FCFFFF'
+                                },
+                                action:'Main-wineJournalButton-id',
+                                icon: 'resources/icons/myIcons/Coctail.png'
+                            },
+                            {html:[''].join(""), flex:.5},
+                            {
+                                xtype: 'button',
+                                text:  'BAC Calculator',
+                                height: 48,
+                                width: 130,
+                                flex: 3.2,
+                                iconAlign: 'top',
+                                style: {
+                                    background: '#FCFFFF'
+                                },
+                                action:'Main-wineToTryButton-id',
+                                icon: 'resources/icons/myIcons/Runner.png'
+                            },
+                            {html:[' '].join(""), flex:.07},
+                        ]
+                    },
+                    {html:['<br><br>'].join("")},
+                    {
+                        xtype: 'container',
+                        layout: 'hbox',
+                        align: 'middle',
+                        items:[
+                            {html:[' '].join(""), flex:.07},
+                            {
+                                xtype: 'button',
+                                text:  'Winery Search',
+                                iconCls: 'locate',
+                                iconAlign: 'top',
+                                flex: 3.2,
+                                style: {
+                                    background: '#FCFFFF'
+                                },
+                                height: 48,
+                                width: 130,
+                                action:'Main-wineJournalButton-id'
+                            },
+                            {html:[''].join(""), flex:.5},
+                            {
+                                xtype: 'button',
+                                text:  'About WineBook',
+                                style: {
+                                    background: '#FCFFFF'
+                                },
+                                iconAlign: 'top',
+                                flex: 3.2,
+                                icon: 'resources/icons/myIcons/users-alt.png',
+                                action:'Main-wineToTryButton-id',
+                                height: 48,
+                                width: 130
+                            },
+                            {html:[' '].join(""), flex:.07}
+                        ]
                     }
+
                 ]
             }
         ]

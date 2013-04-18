@@ -8,7 +8,7 @@
 Ext.define("WineBook.view.LoginPage",{
 
     extend: 'Ext.tab.Panel',
-    requires: ['Ext.form.Panel'],
+    requires: ['Ext.form.Panel' , 'Ext.TitleBar'],
     id: 'login-view-id',
 
     config :{
@@ -21,14 +21,12 @@ Ext.define("WineBook.view.LoginPage",{
                 xtype: 'formpanel',
                 iconCls: 'user',
                 scrollable: true,
-                //ååid: 'main-mainPage-id',
 
                 items:[
                     {
-                        cls: 'Login-welcomeMessage',
-                        html: [
-                            '<h2 class="login-welcome">Welcome to WineBook</a></h2>'
-                        ].join("")
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: 'Welcome to WineBook'
                     },
                     {
                         cls: 'Login-Introduction',
