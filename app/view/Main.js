@@ -11,6 +11,7 @@ Ext.define('WineBook.view.Main', {
                 xtype: 'formpanel',
                 iconCls: 'home',
                 ui: 'light',
+                //cls: 'Main-wholePage',
 
                 styleHtmlContent: true,
                 scrollable: true,
@@ -22,7 +23,41 @@ Ext.define('WineBook.view.Main', {
                         xtype: 'titlebar',
                         title: 'WineBook'
                     },
-                    {html:['<br><br>'].join("")},
+                    {
+                        xtype: 'fieldset',
+                        title: 'Quick Search',
+                        //cls: 'Main-searchfield',
+                        items: [
+                            {
+                                xtype: 'searchfield',
+                                label: 'Wine',
+                                name: 'query',
+                                placeHolder: 'Enter Wine Name'
+                            }
+                        ]
+                    },
+//                    {   //The Go button
+//                        xtype: 'container',
+//                        layout: {
+//                            type: 'hbox',
+//                            align: 'middle',
+//                        },
+//                        items:[
+//                            {html:[' '].join(""), flex:3},
+//                            {
+//                                xtype: 'button',
+//                                text:  'Go',
+//                                width: '25%',
+//                                flex: 1,
+//                                style: {
+//                                    background: '#FCFFFF'
+//                                },
+//                                action:'Main-wineJournalButton-id'
+//                            },
+//                            {html:[' '].join(""), flex:3}
+//                        ]
+//                    },
+                    {html:['<br>'].join("")},
                     {
                         xtype: 'container',
                         layout: {
@@ -65,7 +100,7 @@ Ext.define('WineBook.view.Main', {
                         ]
                     },
 
-                    {html:['<br><br>'].join("")},
+                    {html:['<br>'].join("")},
                     {
                         xtype: 'container',
                         layout: {
@@ -84,8 +119,9 @@ Ext.define('WineBook.view.Main', {
                                 style: {
                                     background: '#FCFFFF'
                                 },
+                                iconCls: 'search',
                                 action:'Main-wineJournalButton-id',
-                                icon: 'resources/icons/myIcons/Coctail.png'
+                                //icon: 'resources/icons/myIcons/Coctail.png'
                             },
                             {html:[''].join(""), flex:.5},
                             {
@@ -104,7 +140,7 @@ Ext.define('WineBook.view.Main', {
                             {html:[' '].join(""), flex:.07},
                         ]
                     },
-                    {html:['<br><br>'].join("")},
+                    {html:['<br>'].join("")},
                     {
                         xtype: 'container',
                         layout: 'hbox',
