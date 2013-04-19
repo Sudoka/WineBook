@@ -161,6 +161,6 @@ Ext.define('WineBook.controller.LoginControl',{
             return true;
         }
         return false;
-    },
+    }
 
 });

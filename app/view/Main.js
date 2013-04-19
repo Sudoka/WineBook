@@ -1,7 +1,7 @@
 Ext.define('WineBook.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
-    requires: ['Ext.TitleBar', 'Ext.layout.*'],
+    requires: ['Ext.TitleBar', 'Ext.layout.*', 'Ext.field.Search'],
     config: {
         tabBarPosition: 'bottom',
 
@@ -11,8 +11,6 @@ Ext.define('WineBook.view.Main', {
                 xtype: 'formpanel',
                 iconCls: 'home',
                 ui: 'light',
-                //cls: 'Main-wholePage',
-
                 styleHtmlContent: true,
                 scrollable: true,
 
@@ -26,7 +24,6 @@ Ext.define('WineBook.view.Main', {
                     {
                         xtype: 'fieldset',
                         title: 'Quick Search',
-                        //cls: 'Main-searchfield',
                         items: [
                             {
                                 xtype: 'searchfield',
@@ -36,27 +33,6 @@ Ext.define('WineBook.view.Main', {
                             }
                         ]
                     },
-//                    {   //The Go button
-//                        xtype: 'container',
-//                        layout: {
-//                            type: 'hbox',
-//                            align: 'middle',
-//                        },
-//                        items:[
-//                            {html:[' '].join(""), flex:3},
-//                            {
-//                                xtype: 'button',
-//                                text:  'Go',
-//                                width: '25%',
-//                                flex: 1,
-//                                style: {
-//                                    background: '#FCFFFF'
-//                                },
-//                                action:'Main-wineJournalButton-id'
-//                            },
-//                            {html:[' '].join(""), flex:3}
-//                        ]
-//                    },
                     {html:['<br>'].join("")},
                     {
                         xtype: 'container',
@@ -73,28 +49,28 @@ Ext.define('WineBook.view.Main', {
                                 icon: 'resources/icons/myIcons/star26x26.png',
                                 iconMask: true,
                                 iconAlign: 'top',
-                                height: 48,
-                                width: 130,
+                                height: '40%',
+                                width: '30%',
                                 flex: 3.2,
-                                style: {
-                                    background: '#FCFFFF'
-                                },
+//                                style: {
+//                                    background: '#FCFFFF'
+//                                },
                                 action:'Main-wineJournalButton-id'
                             },
                             {html:[''].join(""), flex:.5},
                             {
                                 xtype: 'button',
                                 text:  'Price Check',
-                                style: {
-                                    background: '#FCFFFF'
-                                },
+//                                style: {
+//                                    background: '#FCFFFF'
+//                                },
                                 icon: 'resources/icons/myIcons/Bankaccount.png',
                                 iconMask: true,
                                 flex: 3.2,
                                 iconAlign: 'top',
-                                action:'Main-wineToTryButton-id',
-                                height: 48,
-                                width: 130
+                                action:'Main-priceCheckButton-id',
+                                height: '40%',
+                                width: '30%'
                             },
                             {html:[' '].join(""), flex:.07},
                         ]
@@ -113,28 +89,28 @@ Ext.define('WineBook.view.Main', {
                                 xtype: 'button',
                                 text:  'Wine Search',
                                 iconAlign: 'top',
-                                height: 48,
-                                width: 130,
+                                height: '40%',
+                                width: '30%',
                                 flex: 3.2,
-                                style: {
-                                    background: '#FCFFFF'
-                                },
+//                                style: {
+//                                    background: '#FCFFFF'
+//                                },
                                 iconCls: 'search',
-                                action:'Main-wineJournalButton-id',
+                                action:'Main-wineSearchButton-id'
                                 //icon: 'resources/icons/myIcons/Coctail.png'
                             },
                             {html:[''].join(""), flex:.5},
                             {
                                 xtype: 'button',
                                 text:  'BAC Calculator',
-                                height: 48,
-                                width: 130,
+                                height: '40%',
+                                width: '30%',
                                 flex: 3.2,
                                 iconAlign: 'top',
-                                style: {
-                                    background: '#FCFFFF'
-                                },
-                                action:'Main-wineToTryButton-id',
+//                                style: {
+//                                    background: '#FCFFFF'
+//                                },
+                                action:'Main-bacCalculatorButton-id',
                                 icon: 'resources/icons/myIcons/Runner.png'
                             },
                             {html:[' '].join(""), flex:.07},
@@ -153,26 +129,26 @@ Ext.define('WineBook.view.Main', {
                                 iconCls: 'locate',
                                 iconAlign: 'top',
                                 flex: 3.2,
-                                style: {
-                                    background: '#FCFFFF'
-                                },
-                                height: 48,
-                                width: 130,
-                                action:'Main-wineJournalButton-id'
+//                                style: {
+//                                    background: '#FCFFFF'
+//                                },
+                                height: '40%',
+                                width: '30%',
+                                action:'Main-winerySearchButton-id'
                             },
                             {html:[''].join(""), flex:.5},
                             {
                                 xtype: 'button',
                                 text:  'About WineBook',
-                                style: {
-                                    background: '#FCFFFF'
-                                },
+//                                style: {
+//                                    background: '#FCFFFF'
+//                                },
                                 iconAlign: 'top',
                                 flex: 3.2,
                                 icon: 'resources/icons/myIcons/users-alt.png',
-                                action:'Main-wineToTryButton-id',
-                                height: 48,
-                                width: 130
+                                action:'Main-aboutUsButton-id',
+                                height: '40%',
+                                width: '30%'
                             },
                             {html:[' '].join(""), flex:.07}
                         ]
