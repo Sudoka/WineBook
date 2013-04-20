@@ -17,7 +17,8 @@ for ($i = 0; $i < count($wineNameInput); ++$i) {
         $searchQuery = $searchQuery . $wineNameInput[$i];
     }
 }
-
+//in case of 1 single word:
+if(count($wineNameInput) == 1){$searchQuery = $wineNameInput[0];}
 //$json_url = 'http://www.iwinedb.com/WineSearch.aspx?search=adv&wine=cabernet%20sauvignon';
 //$json_url = 'http://www.iwinedb.com/WineSearch.aspx?search=adv&wine=Riesling';
 //$json_url = 'http://www.iwinedb.com/WineSearch.aspx?search=adv&wine=Riesling%20Alsace%20Brandluft';
@@ -35,6 +36,7 @@ $id = 6;
 
 $counter = 0;
 $jsonArray = array();
+
 for ($i = 0; $i < count($arr); ++$i) {   //only get 500 wines
 	if($name <= count($arr) && $year <= count($arr) && $id <= count($arr)  && $counter <= 500 ){
 		$wine = $arr[$name];
@@ -52,6 +54,9 @@ for ($i = 0; $i < count($arr); ++$i) {   //only get 500 wines
 		$counter = $counter + 1;
 		$year = $year + 7;
     }
+}
+if(count($jsonArray) == 0){
+    return;
 }
 echo (json_encode($jsonArray));
 

@@ -25,6 +25,12 @@ Ext.define('WineBook.controller.MainPageControl',{
     onSearchQueryChanged: function(field){
         var me = this;
         var mainPage = me.getMainPage();
+        var mask = {masked: {
+            xtype: 'loadmask',
+                message: 'Searching for Wine'
+        }};
+        mainPage.setConfig(mask);
+        mainPage.setMasked(true);
         var searchKey = field._value;
         var nestedListData = [];
         Ext.getStore('quickSearchResultStore').getProxy().setExtraParams({wineName:searchKey});
@@ -38,10 +44,8 @@ Ext.define('WineBook.controller.MainPageControl',{
             }
         });
         store.load({
-            callback: function(records, operation, successful) {
-                if(records && records[0]){
-                    //console.log(records[0].data);
-                    //console.log(records);
+            callback: function(records, operation) {
+                if(operation._records.length > 0){
                     for(var i = 0; i < records.length; i++){
                         nestedListData.push({text : records[i].data.wineName + " " + records[i].data.year});
                     }
@@ -49,12 +53,19 @@ Ext.define('WineBook.controller.MainPageControl',{
                         model: 'ListItem',
                         defaultRootProperty: 'text',
                         root: {text : nestedListData}
+
                     });
                     var quickSearchResult = Ext.create('WineBook.view.quickSearchResult');
                     quickSearchResult.setStore(resultStore);
+                    mainPage.setMasked(false);
                     mainPage.hide();
                     Ext.Viewport.add(quickSearchResult);
                     Ext.Viewport.setActiveItem(quickSearchResult);
+                }
+                else{
+                    mainPage.setMasked(false);
+                    alert("No Result");
+                    return;
                 }
 
 

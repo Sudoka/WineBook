@@ -5,7 +5,10 @@ Ext.define('WineBook.view.Main', {
     id:  'mainPage-id',
     config: {
         tabBarPosition: 'bottom',
-
+//        masked: {
+//            xtype: 'loadmask',
+//            message: 'Searching for Wine'
+//        },
         items: [
             {
                 title: 'Menu',
