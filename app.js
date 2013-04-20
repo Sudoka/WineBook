@@ -27,19 +27,20 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    models: ['UserProfile'],
+    models: ['UserProfile', 'WineInfoModel', 'quickSearchResultModel'],
 
-    stores: ['UserProfileStore'],
+    stores: ['UserProfileStore', 'WineInfoStore', 'quickSearchResultStore'],
 
 
     views: [
         'Main',
         'LoginPage' , 'util.forms.LoginForm',
-        'SignupView', 'util.forms.SignupForm'
+        'SignupView', 'util.forms.SignupForm',
+        'quickSearchResult'
     ],
 
     controllers: [
-        'LoginControl'
+        'LoginControl', 'MainPageControl'
     ],
     icon: {
         '57': 'resources/icons/Icon.png',

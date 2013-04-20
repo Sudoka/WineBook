@@ -2,6 +2,7 @@ Ext.define('WineBook.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
     requires: ['Ext.TitleBar', 'Ext.layout.*', 'Ext.field.Search'],
+    id:  'mainPage-id',
     config: {
         tabBarPosition: 'bottom',
 
@@ -28,8 +29,10 @@ Ext.define('WineBook.view.Main', {
                             {
                                 xtype: 'searchfield',
                                 label: 'Wine',
-                                name: 'query',
-                                placeHolder: 'Enter Wine Name'
+                                name: 'quicksearch',
+                                placeHolder: 'Enter Wine Name',
+                                id: 'quicksearch',
+                                action: 'mainPageSearchFiled'
                             }
                         ]
                     },
