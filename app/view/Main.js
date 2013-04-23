@@ -5,10 +5,6 @@ Ext.define('WineBook.view.Main', {
     id:  'mainPage-id',
     config: {
         tabBarPosition: 'bottom',
-//        masked: {
-//            xtype: 'loadmask',
-//            message: 'Searching for Wine'
-//        },
         items: [
             {
                 title: 'Menu',
@@ -66,11 +62,11 @@ Ext.define('WineBook.view.Main', {
                             {html:[''].join(""), flex:.5},
                             {
                                 xtype: 'button',
-                                text:  'Price Check',
+                                text:  'Scan Barcode',
 //                                style: {
 //                                    background: '#FCFFFF'
 //                                },
-                                icon: 'resources/icons/myIcons/Bankaccount.png',
+                                icon: 'resources/icons/myIcons/barcode26x26.png',
                                 iconMask: true,
                                 flex: 3.2,
                                 iconAlign: 'top',

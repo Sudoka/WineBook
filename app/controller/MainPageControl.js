@@ -64,7 +64,7 @@ Ext.define('WineBook.controller.MainPageControl',{
                 }
                 else{
                     mainPage.setMasked(false);
-                    alert("No Result");
+                    Ext.Msg.alert('No Result');
                     return;
                 }
 
