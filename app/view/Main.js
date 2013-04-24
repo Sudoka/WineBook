@@ -23,18 +23,13 @@ Ext.define('WineBook.view.Main', {
                 html: 'Home Screen'
             },
             {
-                title: 'Wines',
-                iconCls: 'search',
-                html: 'Home Screen'
-            },
-            {
-                title: 'Wineries',
-                iconCls: 'locate',
-                html: 'Home Screen'
-            },
-            {
                 title: 'User',
                 iconCls: 'user',
+                html: 'Home Screen'
+            },
+            {
+                title: 'More',
+                iconCls: 'more',
                 html: 'Home Screen'
             }
         ]
