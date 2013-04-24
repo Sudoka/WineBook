@@ -4,9 +4,9 @@
  * Date: 4/20/13
  * Time: 2:20 AM
  */
-Ext.define('WineBook.view.quickSearchResult', {
+Ext.define('WineBook.view.quickSearchResult', { //display quick search results.
     extend: 'Ext.NestedList',
-    requires: ['Ext.TitleBar', 'Ext.layout.*', 'Ext.field.Search'],
+    //requires: ['Ext.TitleBar', 'Ext.layout.*', 'Ext.field.Search'],
     id:  'quickSearchResult-id',
     config: {
         scrollable: true,
@@ -14,7 +14,10 @@ Ext.define('WineBook.view.quickSearchResult', {
         title: 'Quick Search',
         displayField: 'text',
         backButton: {
-            ui: 'back'
-        }
+            ui: 'back',
+            iconCls: 'arrow_left'
+        },
+        useTitleAsBackText: false,
+        backText: ''
     }
 });
