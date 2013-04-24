@@ -47,7 +47,7 @@ for ($i = 0; $i < count($arr); ++$i) {   //only get 500 wines
 		$wineId = substr($wineId,11, strlen($wineId) - 43);	
 		$wineYear = substr($wineYear,11, strlen($wineYear) - 43);	
 		//echo $wine . "<br>" . $wineId . "<br>";
-		$value = array('wineName' => $wine, 'id' => $wineId, 'year' => $wineYear);
+		$value = array('text' => $wine, 'id' => $wineId, 'year' => $wineYear);
 		array_push($jsonArray, $value);
 		$name = $name + 7;
 		$id = $id + 7;

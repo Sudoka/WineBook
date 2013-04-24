@@ -5,7 +5,7 @@
  * Time: 11:42 PM
  */
 
-Ext.define('WineBook.controller.MainPageControl',{ //control the menu page
+Ext.define('WineBook.controller.MenuPageControl',{ //control the menu page
     extend: 'Ext.app.Controller',
     requires: ['Ext.data.TreeStore'],
     config:{
@@ -22,11 +22,10 @@ Ext.define('WineBook.controller.MainPageControl',{ //control the menu page
             }
         }
     },
+
     onSearchQueryChanged: function(field){
         var me = this;
         var menuPage = me.getMenuPage();
-
-
         var searchKey = field._value;
         if(searchKey){  //only search if input is valid
             var mask = {masked: {
@@ -38,28 +37,32 @@ Ext.define('WineBook.controller.MainPageControl',{ //control the menu page
             var nestedListData = [];
             Ext.getStore('quickSearchResultStore').getProxy().setExtraParams({wineName:searchKey});
             var store = Ext.getStore('quickSearchResultStore');
-            Ext.define('ListItem', {
-                extend: 'Ext.data.Model',
-                config: {
-                    fields: [
-                        {name: 'text',  type: 'string'}
-                    ]
-                }
-            });
+
             store.load({
                 callback: function(records, operation) {
                     if(operation._records.length > 0){
                         for(var i = 0; i < records.length; i++){
-                            nestedListData.push({text : records[i].data.wineName + " " + records[i].data.year});
+                            nestedListData.push({text : records[i].data.text + " " + records[i].data.year, id:records[i].data.id, year:records[i].data.year });
                         }
                         var resultStore = Ext.create('Ext.data.TreeStore', {
-                            model: 'ListItem',
+                            model: 'WineBook.model.quickSearchResultModel',
                             defaultRootProperty: 'text',
                             root: {text : nestedListData}
-
                         });
                         var quickSearchResult = Ext.create('WineBook.view.quickSearchResult');
                         quickSearchResult.setStore(resultStore);
+                        quickSearchResult.add({
+
+                            docked: 'top',
+                            xtype: 'fieldset',
+                            margin: '5 3 5 3',
+                            items:[{xtype: 'searchfield',
+                                autoComplete: true,
+                                autoDestroy: true,
+                                //label: 'Wine',
+                                placeHolder: 'Enter Wine Name',
+                                action: 'quickSearchResultPage_SearchFiled'}]
+                        });
                         menuPage.setMasked(false);
                         menuPage.hide();
                         Ext.Viewport.add(quickSearchResult);

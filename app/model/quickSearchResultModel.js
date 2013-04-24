@@ -9,7 +9,7 @@ Ext.define('WineBook.model.quickSearchResultModel', {
 
     config: {
         fields: [
-            {name: 'wineName',  type: 'string'},
+            {name: 'text',  type: 'string'},  //wine name
             {name: 'id',  type: 'string'},
             {name: 'year',      type: 'string'}
         ]

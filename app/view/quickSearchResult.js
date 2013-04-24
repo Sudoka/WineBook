@@ -18,6 +18,16 @@ Ext.define('WineBook.view.quickSearchResult', { //display quick search results.
             iconCls: 'arrow_left'
         },
         useTitleAsBackText: false,
-        backText: ''
+        backText: '',
+        toolbar:
+        {
+                items:[
+                    {
+                        ui: 'back',
+                        xtype: 'button',
+                        iconCls: 'arrow_left'
+                    }
+                ]
+        }
     }
 });

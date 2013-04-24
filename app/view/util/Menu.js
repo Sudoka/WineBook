@@ -23,6 +23,8 @@ Ext.define('WineBook.view.util.Menu', {   //the Menu Page
                     {
                         xtype: 'searchfield',
                         label: 'Wine',
+                        autoComplete: true,
+                        autoDestroy: true,
                         name: 'quicksearch',
                         placeHolder: 'Enter Wine Name',
                         id: 'quicksearch',

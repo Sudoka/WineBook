@@ -40,7 +40,7 @@ Ext.application({
     ],
 
     controllers: [
-        'LoginControl', 'MainPageControl'
+        'LoginControl', 'MenuPageControl', 'quickSearchResultControl'
     ],
     icon: {
         '57': 'resources/icons/Icon.png',
