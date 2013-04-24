@@ -22,7 +22,7 @@ Ext.define('WineBook.view.quickSearchResult', { //display quick search results.
         toolbar:
         {
                 items:[
-                    {
+                    { //back to main menu page
                         ui: 'back',
                         xtype: 'button',
                         iconCls: 'arrow_left'

@@ -4,7 +4,7 @@
  * Date: 4/23/13
  * Time: 9:00 PM
  */
-Ext.define('WineBook.view.util.Menu', {   //the Menu Page
+Ext.define('WineBook.view.util.tabs.Menu', {   //the Menu Page
     extend: 'Ext.form.Panel',
     requires: ['Ext.TitleBar', 'Ext.layout.*', 'Ext.field.Search'],
     id:  'menu-id',
