@@ -56,12 +56,15 @@ Ext.define('WineBook.controller.MenuPageControl',{ //control the menu page
                             docked: 'top',
                             xtype: 'fieldset',
                             margin: '5 3 5 3',
-                            items:[{xtype: 'searchfield',
+                            id: 'quickSearchResultPage_SearchFiled_id',
+                            items:[{
+                                xtype: 'searchfield',
                                 autoComplete: true,
                                 autoDestroy: true,
-                                //label: 'Wine',
                                 placeHolder: 'Enter Wine Name',
-                                action: 'quickSearchResultPage_SearchFiled'}]
+                                action: 'quickSearchResultPage_SearchFiled'
+
+                            }]
                         });
                         menuPage.setMasked(false);
                         menuPage.hide();

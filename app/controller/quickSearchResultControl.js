@@ -12,7 +12,8 @@ Ext.define('WineBook.controller.quickSearchResultControl',{ //control the quick 
 
         refs:{
             menuPage:    '#menu-id',
-            quickSearch:    '#quickSearchResult-id'
+            quickSearch:    '#quickSearchResult-id',
+            main:   '#mainPage-id'
         },
         control:
         {
@@ -20,8 +21,47 @@ Ext.define('WineBook.controller.quickSearchResultControl',{ //control the quick 
             "searchfield[action=quickSearchResultPage_SearchFiled]": {
                 action: 'onSearchQueryChanged',
                 clearicontap: 'onSearchReset'
+            },
+            "button[action=quickSearchResult-backButton]": {
+                tap: 'showMenu'
+            },
+            "quickSearchNestedList":{  //when user click back on the info page
+                itemtap: 'showWineInfo',
+                back:'showQuickSearchResult'
             }
         }
+    },
+    showQuickSearchResult: function(view, node, lastActiveList, detailCardActive, eOpts ){
+        var me = this;
+        var quickSearch = me.getQuickSearch();
+        quickSearch.setToolbar({ title:'Quick Search'});
+        Ext.getCmp('quickSearchResult-backButton-id').show();
+        Ext.getCmp('quickSearchResultPage_SearchFiled_id').show();
+        Ext.getCmp('quickSearch_container_id').hide();
+
+    },
+    showWineInfo: function(view,list,index,target,record,e,eOpts){
+        var me = this;
+        console.log( record);
+        var quickSearch = me.getQuickSearch();
+
+        quickSearch.setToolbar({ title:'Wine Info'});
+        quickSearch.setBackButton({text: 'Search'});
+        Ext.getCmp('quickSearchResult-backButton-id').hide();
+        Ext.getCmp('quickSearchResultPage_SearchFiled_id').hide();
+        Ext.getCmp('quickSearch_container_id').show();
+    },
+
+    showMenu: function(){
+        var me = this;
+        var main = me.getMain();
+        var quickSearch = me.getQuickSearch();
+        var menuPage = me.getMenuPage();
+
+        main.setShowAnimation({duration: 250, type :'slide',direction : 'right'});
+        //main.show();
+        menuPage.show();
+        quickSearch.destroy();
     },
     onSearchQueryChanged: function(field){
         var me = this;

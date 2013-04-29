@@ -3,6 +3,13 @@
 .Login-Introduction .login-message{
     text-align: center;
 }
-
-
+.wineInfo-btCls{
+    font-size: 90%;
+}
+.backBt{
+    font-size: 90%;
+}
+/*.toolbarCls{*/
+    /*font-size: 80%;*/
+/*}*/
 /* End my css code*/
