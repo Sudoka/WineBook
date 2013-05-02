@@ -14,7 +14,7 @@ Ext.define('WineBook.store.WineInfoStore', {
         autoLoad: false,
         proxy:{
             type: 'ajax',
-            url:  'http://localhost/~huypham612/WineBook/server/quickSearch.php',
+            url:  'http://localhost/~huypham612/WineBook/server/getWineInfo.php',
             reader: {
                 type: 'json'
             }

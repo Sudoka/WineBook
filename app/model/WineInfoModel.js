@@ -12,10 +12,14 @@ Ext.define('WineBook.model.WineInfoModel', {
         fields: [
             {name: 'winery',  type: 'string'},
             {name: 'varietal',    type: 'string'},
-            {name: 'varietal type',    type: 'string'},
+            {name: 'varietalType',    type: 'string'},
             {name: 'vintage',    type: 'string'},
-            {name: 'release price',    type: 'string'},
-            {name: 'cases made',    type: 'string'}
+            {name: 'releasePrice',    type: 'string'},
+            {name: 'casesMade',    type: 'string'},
+            {name: 'wineEnthusiastScore',    type: 'string'},
+            {name: 'wineSpectatorScore',    type: 'string'},
+            {name: 'wineAdvocateScoreScore',    type: 'string'},
+            {name: 'picture',    type: 'string'}
         ]
     }
 });

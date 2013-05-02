@@ -5,7 +5,7 @@
  * Time: 2:48 AM
  */
 Ext.define('WineBook.store.quickSearchResultStore', {
-    extend: 'Ext.data.TreeStore',
+    extend: 'Ext.data.TreeStore',   //for the nested list
     requires: 'WineBook.model.quickSearchResultModel',
 
     config: {
