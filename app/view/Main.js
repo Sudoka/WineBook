@@ -26,12 +26,8 @@ Ext.define('WineBook.view.Main', {
                 title: 'User',
                 iconCls: 'user',
                 html: 'Home Screen'
-            },
-            {
-                title: 'More',
-                iconCls: 'more',
-                html: 'Home Screen'
             }
+
         ]
     }
 });

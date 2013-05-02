@@ -79,7 +79,7 @@ Ext.define('WineBook.view.quickSearchResult', { //display quick search results.
 
             },
             {
-                //template for the latest BMI: will get updated by Signup.js
+                //template for wineInfo: will get updated by quickSearchResultControl.js
                 id: 'wineInfo-template-id',
                 cls:'wineInfo-template-cls',
                 hidden: true
