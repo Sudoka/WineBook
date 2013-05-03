@@ -42,7 +42,7 @@ Ext.define('WineBook.controller.MenuPageControl',{ //control the menu page
                 callback: function(records, operation) {
                     if(operation._records.length > 0){
                         for(var i = 0; i < records.length; i++){
-                            nestedListData.push({text : records[i].data.text + " " + records[i].data.year, id:records[i].data.id, year:records[i].data.year });
+                            nestedListData.push({text : records[i].data.text + " " + records[i].data.year, id:records[i].data.id, year:records[i].data.year, leaf: true });
                         }
                         var resultStore = Ext.create('Ext.data.TreeStore', {
                             model: 'WineBook.model.quickSearchResultModel',

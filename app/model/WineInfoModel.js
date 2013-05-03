@@ -18,7 +18,7 @@ Ext.define('WineBook.model.WineInfoModel', {
             {name: 'casesMade',    type: 'string'},
             {name: 'wineEnthusiastScore',    type: 'string'},
             {name: 'wineSpectatorScore',    type: 'string'},
-            {name: 'wineAdvocateScoreScore',    type: 'string'},
+            {name: 'wineAdvocateScore',    type: 'string'},
             {name: 'picture',    type: 'string'}
         ]
     }

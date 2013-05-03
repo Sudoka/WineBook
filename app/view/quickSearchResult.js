@@ -38,12 +38,37 @@ Ext.define('WineBook.view.quickSearchResult', { //display quick search results.
                 }
             ]
         },
+        detailCard:{ //when the leaf item is click ---> show wineInfo.
+            xtype: 'panel',
+            styleHtmlContent: true,
+            fullscreen: true,
+            layout: 'vbox',
+            scrollable: true,
+            margin: '40 0 0 0',
+            items:[
+                {
+                    xtype: 'image',
+                    id: 'wineInfo-picture-id',
+                    hidden: true,
+                    //mode: 'd',
+                    flex: 1,
+                    margin: '0 0 5 0'
+                },
+                {
+                    //template for wineInfo: will get updated by quickSearchResultControl.js
+                    id: 'wineInfo-template-id',
+                    cls:'wineInfo-template-cls',
+                    flex: 2
+                }
+            ]
+        },
         items:[
             {
                 xtype: 'container',
                 hidden: true,
 
                 id: 'quickSearch_container_id',
+                scrollable: false,
                 layout: {
                     type: 'hbox',
                     align: 'top'
@@ -77,14 +102,32 @@ Ext.define('WineBook.view.quickSearchResult', { //display quick search results.
                     }
                 ]
 
-            },
-            {
-                //template for wineInfo: will get updated by quickSearchResultControl.js
-                id: 'wineInfo-template-id',
-                cls:'wineInfo-template-cls',
-                hidden: true
             }
+//            {
+//                xtype: 'container',
+//                layout: {
+//                    type: 'vbox'
+//                    //align: 'middle'
+//                },
+//                id: 'wineInfo-vbox-id',
+//                hidden: true,
+//                items:[
+//                    {
+//                        xtype: 'image',
+//                        hidden: true,
+//                        id: 'wineInfo-picture-id',
+//                        flex:.5
+//                    },
+//                    {
+//                        //template for wineInfo: will get updated by quickSearchResultControl.js
+//                        styleHtmlContent:true,
+//                        id: 'wineInfo-template-id',
+//                        cls:'wineInfo-template-cls',
+//                        //hidden: true,
+//                        flex: 1.4
+//                    }
+//                ]
+//            }
         ]
-
     }
 });

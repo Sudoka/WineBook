@@ -6,9 +6,9 @@
  */
 Ext.define('WineBook.controller.quickSearchResultControl',{ //control the quick search result page
     extend: 'Ext.app.Controller',
-    requires: ['Ext.data.TreeStore'],
+    requires: ['Ext.data.TreeStore', 'Ext.Img','Ext.XTemplateCompiler'],
     config:{
-        stores: ['UserProfileStore' , 'quickSearchResultStore'],
+        stores: ['UserProfileStore' , 'quickSearchResultStore', 'WineInfoStore'],
 
         refs:{
             menuPage:    '#menu-id',
@@ -42,7 +42,8 @@ Ext.define('WineBook.controller.quickSearchResultControl',{ //control the quick 
     },
     showWineInfo: function(view,list,index,target,record,e,eOpts){
         var me = this;
-        console.log( record);
+        //console.log( record);
+        var wineName = record.data.text;
         var quickSearch = me.getQuickSearch();
 
         quickSearch.setToolbar({ title:'Wine Info'});
@@ -50,6 +51,54 @@ Ext.define('WineBook.controller.quickSearchResultControl',{ //control the quick 
         Ext.getCmp('quickSearchResult-backButton-id').hide();
         Ext.getCmp('quickSearchResultPage_SearchFiled_id').hide();
         Ext.getCmp('quickSearch_container_id').show();
+
+
+        var picture = Ext.ComponentQuery.query('#wineInfo-picture-id')[0];
+        var infoTemp = Ext.getCmp('wineInfo-template-id');
+
+        var tpl = new Ext.XTemplate(
+            '<tpl for=".">',
+            '<table class=\"wineInfoTable\">',
+            '<caption><b>{wineName}</b></caption>',
+            '<tr><td class=\"leftSideofTable\">Winery:          </td> <td class=\"rightSideofTable\">{winery}             </td>  </tr>',
+            '<tr><td class=\"leftSideofTable\">Varietal:        </td> <td class=\"rightSideofTable\">{varietal}           </td>  </tr>',
+            '<tr><td class=\"leftSideofTable\">Type:            </td> <td class=\"rightSideofTable\">{varietalType}       </td>  </tr>',
+            '<tr><td class=\"leftSideofTable\">Vintage:         </td> <td class=\"rightSideofTable\">{vintage}            </td>  </tr>',
+            '<tr><td class=\"leftSideofTable\">Release Price:   </td> <td class=\"rightSideofTable\">{releasePrice}       </td>  </tr>',
+            '<tr><td class=\"leftSideofTable\">Cases Made:      </td> <td class=\"rightSideofTable\">{casesMade}          </td>  </tr>',
+            '<tr><td class=\"leftSideofTable\">Enthusiast Score:</td> <td class=\"rightSideofTable\">{wineEnthusiastScore}</td>  </tr>',
+            '<tr><td class=\"leftSideofTable\">Spectator Score: </td><td class=\"rightSideofTable\">{wineSpectatorScore}  </td>  </tr>',
+            '<tr><td class=\"leftSideofTable\">Advocate Score:  </td> <td class=\"rightSideofTable\">{wineAdvocateScore}  </td>  </tr>',
+            '</table>',
+            '</tpl>',
+            '<i>Data collected from iwinedb.com</i>'
+        );
+
+        Ext.getStore('WineInfoStore').getProxy().setExtraParams({wineId:record.data.id});
+        var store = Ext.getStore('WineInfoStore');
+        store.load({
+            callback: function(records, operation, successful) {
+                if(records){
+                    //console.log('result:  ' , records[0].data);
+                    //var info = [{wineName: wineName}].concat([records[0].data]);
+                    var info = Ext.apply({wineName: wineName}, records[0].data);
+                    //console.log('info ', info);
+                    infoTemp.updateHtml(tpl.applyTemplate(info));
+
+                    if(records[0].data.picture != ''){ //when there is an image
+                        picture.setSrc(records[0].data.picture.replace(/\\/g,""));
+                        picture.setHidden(false);
+                        console.log('pic:  ',picture);
+                    }
+                    else{
+                        picture.setHidden(true);
+                    }
+                }
+            }
+        });//end loading
+        //console.log('detail ', quickSearch.getDetailCard());
+
+
     },
 
     showMenu: function(){
@@ -83,8 +132,9 @@ Ext.define('WineBook.controller.quickSearchResultControl',{ //control the quick 
                     if(operation._records.length > 0){
 
                         for(var i = 0; i < records.length; i++){
-                            nestedListData.push({text : records[i].data.text + " " + records[i].data.year, id:records[i].data.id, year:records[i].data.year });
+                            nestedListData.push({text : records[i].data.text + " " + records[i].data.year, id:records[i].data.id, year:records[i].data.year, leaf: true });
                         }
+
                         var resultStore = Ext.create('Ext.data.TreeStore', {
                             model: 'WineBook.model.quickSearchResultModel',
                             defaultRootProperty: 'text',

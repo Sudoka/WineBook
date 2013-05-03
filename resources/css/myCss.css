@@ -9,6 +9,13 @@
 .backBt{
     font-size: 90%;
 }
+.wineInfoTable .leftSideofTable{
+    width: 45%;
+}
+.wineInfoTable .rightSideofTable{
+    width: 55%;
+
+}
 /*.toolbarCls{*/
     /*font-size: 80%;*/
 /*}*/

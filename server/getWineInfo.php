@@ -7,13 +7,15 @@
  * To change this template use File | Settings | File Templates.
  */
 
-$wineId = explode( " ",$_GET['wineId']);
+$wineId = $_GET['wineId'];
 
 
 //$json_url = 'http://www.iwinedb.com/WineDetails.aspx?wid=294095';
 //$json_url = 'http://www.iwinedb.com/WineDetails.aspx?wid=199730';
-$json_url = 'http://www.iwinedb.com/WineDetails.aspx?wid=309744';
-//$json_url = 'http://www.iwinedb.com/WineDetails.aspx?wid=' . $wineId;
+//$json_url = 'http://www.iwinedb.com/WineDetails.aspx?wid=309744';
+//$json_url = 'http://www.iwinedb.com/WineDetails.aspx?wid=199730';
+$json_url = 'http://www.iwinedb.com/WineDetails.aspx?wid=' . $wineId;
+
 
 
 $text = file_get_contents($json_url) ; // scrape page into variable
@@ -26,7 +28,9 @@ $text_String = htmlentities(json_encode($text)) ;
 
 $pic = explode("href=\\&quot;", $text_String);
 $pic = substr($pic[1], 0, strpos($pic[1], "\\&quot;"));
-
+if(strpos($pic, "NoWineLabel") != false){
+    $pic = '';
+}
 $type = explode("&lt;span id=\\&quot;LabelVarietalType\\&quot;&gt;", $text_String);
 $type = getData($type[1]);
 $year = explode("&lt;span id=\\&quot;LabelVintage\\&quot;&gt;", $text_String);
@@ -54,7 +58,7 @@ $jsonArray = array( 'winery' => $winery,
                     'casesMade'  =>$cases,
                     'wineEnthusiastScore' =>$enthusiastScore,
                     'wineSpectatorScore' => $spectatorScore,
-                    'wineAdvocateScoreScore' => $advocateScore,
+                    'wineAdvocateScore' => $advocateScore,
                     'picture'  => $pic);
 
 
