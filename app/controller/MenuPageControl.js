@@ -12,16 +12,48 @@ Ext.define('WineBook.controller.MenuPageControl',{ //control the menu page
         stores: ['UserProfileStore'],
 
         refs:{
-            menuPage:    '#menu-id'
+            menuPage:    '#menu-id',
+            aboutPage:   '#about-id'
         },
         control:
         {
             "searchfield[action=menuPageSearchFiled]": {
                 action: 'onSearchQueryChanged',
                 clearicontap: 'onSearchReset'
+            },
+
+            //Sam's About Page
+            "button[action=Main-aboutUsButton-id]": {
+                tap: 'launchAboutUsPage'
+            },
+            "button[action=About-close-id]": {
+                tap: 'closeAboutUsPopup'
             }
+            //end Sam's
         }
     },
+
+    //Sam's About Page
+    closeAboutUsPopup: function(){
+        var me = this;
+        me.getAboutPage().hide();
+    },
+
+    launchAboutUsPage: function(){
+        var me = this;
+        var aboutPopup = me.getAboutPage();
+        if(aboutPopup){  //in case if the about is already created
+            aboutPopup.show();
+        }
+        else{
+            var aboutPopup = Ext.create('WineBook.view.util.popups.About');
+            Ext.Viewport.add(aboutPopup);
+            aboutPopup.setHeight(Ext.Viewport.getWindowHeight());
+            aboutPopup.setWidth(Ext.Viewport.getWindowWidth());
+            aboutPopup.show();
+        }
+    },
+    //end Sam's
 
     onSearchQueryChanged: function(field){
         var me = this;

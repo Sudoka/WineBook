@@ -34,7 +34,7 @@ Ext.application({
 
     views: [
         'Main',
-        'util.tabs.Menu', 'util.popups.picturePopup',
+        'util.tabs.Menu', 'util.popups.picturePopup', 'util.popups.About',
         'LoginPage' , 'util.forms.LoginForm',
         'SignupView', 'util.forms.SignupForm',
         'quickSearchResult'
