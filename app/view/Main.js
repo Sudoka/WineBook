@@ -5,10 +5,12 @@ Ext.define('WineBook.view.Main', {
     id:  'mainPage-id',
     config: {
         tabBarPosition: 'bottom',
+
         defaults:{
             styleHtmlContent: true,
-            //scrollable: true,
-            tabBarPosition: 'bottom'
+            tabBarPosition: 'bottom',
+            scrollable: false,
+            height: '100%'
         },
         items: [
             {
