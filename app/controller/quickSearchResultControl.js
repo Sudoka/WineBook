@@ -57,6 +57,7 @@ Ext.define('WineBook.controller.quickSearchResultControl',{ //control the quick 
         var me = this;
         var quickSearch = me.getQuickSearch();
         quickSearch.setToolbar({ title:'Quick Search'});
+
         Ext.getCmp('quickSearchResult-backButton-id').show();
         Ext.getCmp('quickSearchResultPage_SearchFiled_id').show();
         Ext.getCmp('quickSearch_container_id').hide();
@@ -70,6 +71,7 @@ Ext.define('WineBook.controller.quickSearchResultControl',{ //control the quick 
 
         quickSearch.setToolbar({ title:'Wine Info'});
         quickSearch.setBackButton({text: 'Search'});
+        quickSearch.setScrollable(false);
         Ext.getCmp('quickSearchResult-backButton-id').hide();
         Ext.getCmp('quickSearchResultPage_SearchFiled_id').hide();
         Ext.getCmp('quickSearch_container_id').show();

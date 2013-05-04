@@ -7,7 +7,7 @@ Ext.define('WineBook.view.Main', {
         tabBarPosition: 'bottom',
         defaults:{
             styleHtmlContent: true,
-            scrollable: true,
+            //scrollable: true,
             tabBarPosition: 'bottom'
         },
         items: [
