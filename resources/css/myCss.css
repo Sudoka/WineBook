@@ -16,6 +16,12 @@
     width: 55%;
 
 }
+.wineInfoTable tr:nth-child(odd){
+    background-color: #f1f8f6;
+}
+.wineInfoTable tr:nth-child(even){
+    background-color: #eaebff;
+}
 /*.toolbarCls{*/
     /*font-size: 80%;*/
 /*}*/

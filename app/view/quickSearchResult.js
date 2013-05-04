@@ -68,7 +68,6 @@ Ext.define('WineBook.view.quickSearchResult', { //display quick search results.
                 hidden: true,
 
                 id: 'quickSearch_container_id',
-                scrollable: false,
                 layout: {
                     type: 'hbox',
                     align: 'top'

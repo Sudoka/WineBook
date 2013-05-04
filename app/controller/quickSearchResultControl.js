@@ -13,7 +13,16 @@ Ext.define('WineBook.controller.quickSearchResultControl',{ //control the quick 
         refs:{
             menuPage:    '#menu-id',
             quickSearch:    '#quickSearchResult-id',
-            main:   '#mainPage-id'
+            main:   '#mainPage-id',
+            picturePopup: {  //the image popup panel
+                selector:   '#picturePopup-id',
+                xtype:      'picturePopup',
+                autoCreate: true  //will create if formpanel does not exist!!!
+            },
+            imagePopup: '#popup-picture-id',  //the image inside the picturePopup panel
+            winePicture: '#wineInfo-picture-id'
+
+
         },
         control:
         {
@@ -28,8 +37,21 @@ Ext.define('WineBook.controller.quickSearchResultControl',{ //control the quick 
             "quickSearchNestedList":{  //when user click back on the info page
                 itemtap: 'showWineInfo',
                 back:'showQuickSearchResult'
+            },
+            winePicture:{  //controller for the referenced winePicture in wineInfoPage
+                tap: 'showPopupPicture'
             }
         }
+    },
+    showPopupPicture: function(pic, e, eOpts ){
+        var me = this;
+        var src = pic.getSrc();
+
+        var popup = me.getPicturePopup();
+        var image = me.getImagePopup();
+        image.setSrc(src);
+        Ext.Viewport.add(popup);
+        popup.show();
     },
     showQuickSearchResult: function(view, node, lastActiveList, detailCardActive, eOpts ){
         var me = this;
@@ -88,7 +110,6 @@ Ext.define('WineBook.controller.quickSearchResultControl',{ //control the quick 
                     if(records[0].data.picture != ''){ //when there is an image
                         picture.setSrc(records[0].data.picture.replace(/\\/g,""));
                         picture.setHidden(false);
-                        console.log('pic:  ',picture);
                     }
                     else{
                         picture.setHidden(true);
